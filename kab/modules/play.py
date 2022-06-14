@@ -272,7 +272,7 @@ async def play(_, message: Message):
                 await remove_active_chat(chat_id)
             except Exception as e:
                 await message.reply_text(
-                    f"❌ __** Kutty Angel's Assistant failed to join**__\n\n**Reason**:{e}"
+                    f"❌ __**Assistant failed to join**__\n\n**Reason**:{e}"
                 )
                 return
         else:
@@ -290,7 +290,7 @@ async def play(_, message: Message):
                 pass
             except Exception as e:
                 return await message.reply_text(
-                    f"❌ __** Kutty Angel's Assistant failed to join**__\n\n**Reason**:{e}"
+                    f"❌ __**Assistant failed to join**__\n\n**Reason**:{e}"
                 )
 
     await message.delete()
@@ -304,7 +304,7 @@ async def play(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"❌ Kutty Angel Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
+                f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
             )
 
         file_name = get_file_name(audio)
@@ -374,7 +374,7 @@ async def play(_, message: Message):
 
         if (dur / 60) > DURATION_LIMIT:
             await lel.edit(
-                f"❌ Kutty Angel Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
+                f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
             )
             return
         requested_by = message.from_user.first_name
@@ -449,12 +449,12 @@ async def play(_, message: Message):
     else:
         if len(message.command) < 2:
             return await lel.edit(
-                "❌ **Kutty Angel Song not found! Try searching with the correct title\nExample » /play 295**"
+                "❌ **Song not found! Try searching with the correct title\nExample » /play 295**"
             )
         await lel.edit("🔎 **Finding the song...**")
         query = message.text.split(None, 1)[1]
         # print(query)
-        await lel.edit("🌟 **Kutty Angel Processing sounds...**")
+        await lel.edit("🌟 **Processing sounds...**")
         try:
             results = YoutubeSearch(query, max_results=5).to_dict()
             url = f"https://youtube.com{results[0]['url_suffix']}"
@@ -477,7 +477,7 @@ async def play(_, message: Message):
 
         except Exception as e:
             await lel.edit(
-                "❌ Kutty Angel Song not found.\n\nTry another keyword or `/play [yt url]`."
+                "❌ Song not found.\n\nTry another keyword or `/play [yt url]`."
             )
             print(str(e))
             return
@@ -494,7 +494,7 @@ async def play(_, message: Message):
 
         if (dur / 60) > DURATION_LIMIT:
             await lel.edit(
-                f"❌ Kutty Angel Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
+                f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!"
             )
             return
         requested_by = message.from_user.first_name
@@ -591,7 +591,7 @@ async def play(_, message: Message):
             )
         except Exception:
             return await lel.edit(
-                "Error Kutty Angel Joining Voice Chat. Make sure Voice Chat is Enabled."
+                "Error Joining Voice Chat. Make sure Voice Chat is Enabled."
             )
 
         await music_on(message.chat.id)
